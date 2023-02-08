@@ -1,9 +1,11 @@
-const inputField = document.getElementById('inputField');
-const taskList = document.getElementById('taskList');
+let taskInput = document.getElementById('taskInput');
+let taskList = document.getElementById('taskList');
+let taskItems = [];
 
 function addTask() {
-    let newTask = document.createElement('p');
-    newTask.innerHTML = inputField.value;
-    taskList.appendChild(newTask); 
-    return false
+    addNewTask(taskInput.value);
+}
+
+function addNewTask() {
+
 }
