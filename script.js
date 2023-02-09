@@ -29,14 +29,8 @@ function addNewTask(task) {
 
 function showlist() {
     const li = document.createElement('li');
-    const removeButton = document.createElement('button');
-    const checkBox = document.createElement('i');
-    li.innerHTML = taskInput.value;
+    li.innerHTML += `<input type="checkbox" class="checkBox"> ${taskInput.value}
+    <i class="deleteBtn fa-solid fa-trash-can"></i>`
     li.className = 'toDoItem';
-    removeButton.className = 'fa-solid fa-trash-can deleteBtn';
-    checkBox.setAttribute('type', 'checkbox')
-    li.appendChild(removeButton);
-    li.appendChild(checkBox);
     taskList.appendChild(li);
-
 }
