@@ -31,6 +31,8 @@ body{
     border-width: 2px;
     background-color: rgb(226, 225, 225);
     padding: 10px;
+    list-style-type: none;
+
 }
 
 .deleteBtn {
@@ -41,5 +43,6 @@ body{
     border-width: 2px;
     font-size: 15px;
     float: right;
-    
+    cursor: pointer;
 }
+

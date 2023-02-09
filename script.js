@@ -1,9 +1,9 @@
 const noText = document.getElementById('p1');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
-const taskItems = [];
+const taskItemsArray = [];
 
-function addTask() {
+function addTaskBtn() {
     addNewTask(taskInput.value);
     return false
 }
@@ -21,14 +21,16 @@ function addNewTask(task) {
             completed : false
         };
 
-        taskItems.push(taskItem);
+        taskItemsArray.push(taskItem);
         showlist();
         taskInput.value = '';
     }
 }
 
 function showlist() {
-    const para = document.createElement('p');
-    para.innerHTML = taskInput.value;
-    taskList.appendChild(para);
+    const li = document.createElement('li');
+    li.innerHTML = taskInput.value;
+    li.className = 'toDoItem';
+    taskList.appendChild(li);
+    
 }
