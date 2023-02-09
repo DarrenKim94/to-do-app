@@ -9,13 +9,14 @@ function addTask() {
 }
 
 function addNewTask(task) {
-    if(task = '') {
+    if(task === '') {
         noText.innerHTML = 'Please type in a task.'
     }
 
     else {
+        noText.innerHTML = '';
         const taskItem = {
-            id : Math.floor(Math.random() * 100),
+            id : Math.floor(Math.random() * 1000),
             name : task,
             completed : false
         };
