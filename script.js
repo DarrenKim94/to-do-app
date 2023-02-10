@@ -28,7 +28,7 @@ function addNewTask(task) {
 
 function showlist() {
     const li = document.createElement('li');
-    li.innerHTML += `<input type="checkbox" class="checkBox"> ${taskInput.value}
+    li.innerHTML += `${taskInput.value}
     <i class="deleteBtn fa-solid fa-trash-can"></i>`
     li.className = 'toDoItem';
     taskList.appendChild(li);
@@ -36,6 +36,7 @@ function showlist() {
 
 function saveToLocalStorage() {
     localStorage.setItem('toDoList', JSON.stringify(taskItemsArray));
+    showlist(taskItemsArray)
 }
 
 function getFromLocalStorage() {
@@ -43,3 +44,4 @@ function getFromLocalStorage() {
     taskItemsArray = JSON.parse(getTask);
     showlist(taskItemsArray);
 }
+getFromLocalStorage()
