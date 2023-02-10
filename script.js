@@ -41,7 +41,9 @@ function saveToLocalStorage() {
 
 function getFromLocalStorage() {
     const getTask = localStorage.getItem('toDoList');
-    taskItemsArray = JSON.parse(getTask);
-    showlist(taskItemsArray);
+    if(getTask) {
+        taskItemsArray = JSON.parse(getTask)
+        showlist(taskItemsArray)
+    }
 }
-getFromLocalStorage()
+getFromLocalStorage() 
