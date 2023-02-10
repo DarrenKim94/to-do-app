@@ -41,8 +41,11 @@ function saveToLocalStorage() {
 
 function getFromLocalStorage() {
     const getTask = localStorage.getItem('toDoList');
+    // if get task exist ion the local storage
     if(getTask) {
+        // change it back to an array
         taskItemsArray = JSON.parse(getTask)
+        // display current items saved from local storage
         showlist(taskItemsArray)
     }
 }
