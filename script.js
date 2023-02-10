@@ -22,7 +22,7 @@ function addNewTask(task) {
         };
 
         taskItemsArray.push(taskItem);
-        showlist();
+        addToLocalStorage()
         taskInput.value = '';
     }
 }
@@ -33,4 +33,8 @@ function showlist() {
     <i class="deleteBtn fa-solid fa-trash-can"></i>`
     li.className = 'toDoItem';
     taskList.appendChild(li);
+}
+
+function addToLocalStorage() {
+    localStorage.setItem('toDoList', JSON.stringify(taskItemsArray));
 }
