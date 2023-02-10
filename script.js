@@ -18,11 +18,10 @@ function addNewTask(task) {
         const taskItem = {
             id : Math.floor(Math.random() * 1000),
             name : task,
-            completed : false
         };
 
         taskItemsArray.push(taskItem);
-        addToLocalStorage()
+        saveToLocalStorage();
         taskInput.value = '';
     }
 }
@@ -35,6 +34,12 @@ function showlist() {
     taskList.appendChild(li);
 }
 
-function addToLocalStorage() {
+function saveToLocalStorage() {
     localStorage.setItem('toDoList', JSON.stringify(taskItemsArray));
+}
+
+function getFromLocalStorage() {
+    const getTask = localStorage.getItem('toDoList');
+    taskItemsArray = JSON.parse(getTask);
+    showlist(taskItemsArray);
 }
