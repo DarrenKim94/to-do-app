@@ -1,7 +1,8 @@
 const noText = document.getElementById('p1');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
-const taskItemsArray = [];
+let taskItemsArray =JSON.parse(localStorage.getItem('toDoListArray')) || [];
+
 
 function addTaskBtn() {
     addNewTask(taskInput.value);
@@ -35,18 +36,17 @@ function showlist() {
 }
 
 function saveToLocalStorage() {
-    localStorage.setItem('toDoList', JSON.stringify(taskItemsArray));
+    localStorage.setItem('toDoListArray', JSON.stringify(taskItemsArray));
     showlist(taskItemsArray)
 }
 
 function getFromLocalStorage() {
-    const getTask = localStorage.getItem('toDoList');
-    // if get task exist ion the local storage
-    if(getTask) {
-        // change it back to an array
-        taskItemsArray = JSON.parse(getTask)
-        // display current items saved from local storage
-        showlist(taskItemsArray)
-    }
+  taskItemsArray.forEach(taskItem => {
+    const li = document.createElement('li');
+    li.innerHTML += `${taskItem.name}
+    <i class="deleteBtn fa-solid fa-trash-can"></i>`
+    li.className = 'toDoItem';
+    taskList.appendChild(li);
+  });
 }
-getFromLocalStorage() 
+getFromLocalStorage()
