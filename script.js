@@ -54,4 +54,8 @@ taskItemsArray.forEach(taskItem => {
     taskList.appendChild(li);
   });
 
+document.getElementById('removeTask').addEventListener("click", deleteTask);
 
+function deleteTask() {
+console.log('hi')
+}
