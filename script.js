@@ -1,7 +1,7 @@
 const noText = document.getElementById('p1');
 const taskInput = document.getElementById('taskInput');
 const taskList = document.getElementById('taskList');
-let savedArray = JSON.parse(localStorage.getItem('toDoList'))
+let savedArray = JSON.parse(localStorage.getItem('toDoList'));
 let taskItemsArray;
 if (savedArray === null) {
     taskItemsArray = [];
@@ -37,7 +37,7 @@ function addNewTask(task) {
 function showList() {
     const li = document.createElement('li');
     li.innerHTML += `${taskInput.value}
-    <i class="deleteBtn fa-solid fa-trash-can" id='removeTask'></i>`
+    <i class="deleteBtn fa-solid fa-trash-can"></i>`
     li.className = 'toDoItem';
     taskList.appendChild(li);
 }
@@ -49,13 +49,20 @@ function saveToLocalStorage() {
 taskItemsArray.forEach(taskItem => {
     const li = document.createElement('li');
     li.innerHTML += `${taskItem.name}
-    <i class="deleteBtn fa-solid fa-trash-can" id='removeTask'></i>`
+    <i class="deleteBtn fa-solid fa-trash-can" id='' onclick='deleteTask(${taskItem.id})'></i>`
     li.className = 'toDoItem';
     taskList.appendChild(li);
   });
 
-document.getElementById('removeTask').addEventListener("click", deleteTask);
+  function deleteTask(id) {
+    taskItemsArray = taskItemsArray.filter(
+        function(todo) {
+            return todo.id !== id
+        }
+    );
+    saveToLocalStorage();
+  }
 
-function deleteTask() {
-console.log('hi')
-}
+//   localStorage.clear()
+
+
