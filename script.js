@@ -12,9 +12,9 @@ else {
 }
 
 
-function addTaskBtn() {
+function addTaskBtn(event) {
+    event.preventDefault();
     addNewTask(taskInput.value);
-    return false
 }
 
 function addNewTask(task) {
@@ -24,7 +24,7 @@ function addNewTask(task) {
 
     else {
         noText.innerHTML = '';
-        const taskItem = {
+         taskItem = {
             id : Math.floor(Math.random() * 1000),
             name : task,
         };
@@ -39,8 +39,9 @@ function addNewTask(task) {
 function showList() {
     li = document.createElement('li');
     li.innerHTML += `${taskInput.value}
-    <i class="deleteBtn fa-solid fa-trash-can"></i> onclick='deleteTask(${taskItem.id})'`
+    <i class="deleteBtn fa-solid fa-trash-can" id='trashIcon' onclick='deleteTask(${taskItem.id})'></i> `
     li.className = 'toDoItem';
+    li.id = 'listItem'
     taskList.appendChild(li);
 }
 
@@ -63,10 +64,15 @@ taskItemsArray.forEach(taskItem => {
             return item.id !== id
         }
     );
-    saveToLocalStorage();
     document.getElementById('trashIcon').remove();
     document.getElementById('listItem').remove();
+    saveToLocalStorage();
   }
+
+
+ 
+
+
 
 
 
