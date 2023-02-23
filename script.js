@@ -30,16 +30,16 @@ function addNewTask(task) {
         };
 
         taskItemsArray.push(taskItem);
-        saveToLocalStorage();
         showList();
+        saveToLocalStorage();
         taskInput.value = '';
     }
 }
 
 function showList() {
-    li = document.createElement('li');
+    const li = document.createElement('li');
     li.innerHTML += `${taskInput.value}
-    <i class="deleteBtn fa-solid fa-trash-can" id='trashIcon' onclick='deleteTask(${taskItem.id})'></i> `
+    <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i> `
     li.className = 'toDoItem';
     li.id = 'listItem'
     taskList.appendChild(li);
@@ -50,9 +50,9 @@ function saveToLocalStorage() {
 }
 
 taskItemsArray.forEach(taskItem => {
-    li = document.createElement('li');
+    const li = document.createElement('li');
     li.innerHTML += `${taskItem.name}
-    <i class="deleteBtn fa-solid fa-trash-can" id='trashIcon' onclick='deleteTask(${taskItem.id})'></i>`
+    <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i>`
     li.className = 'toDoItem';
     li.id = 'listItem'
     taskList.appendChild(li);
@@ -64,9 +64,9 @@ taskItemsArray.forEach(taskItem => {
             return item.id !== id
         }
     );
-    document.getElementById('trashIcon').remove();
-    document.getElementById('listItem').remove();
+    
     saveToLocalStorage();
+    document.getElementById('listItem').remove();
   }
 
 
