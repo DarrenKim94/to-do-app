@@ -37,11 +37,11 @@ function addNewTask(task) {
 }
 
 function showList() {
-    const li = document.createElement('li');
+    li = document.createElement('li');
     li.innerHTML += `${taskInput.value}
     <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i> `
     li.className = 'toDoItem';
-    li.id = 'listItem'
+    li.id = taskItem.id;
     taskList.appendChild(li);
 }
 
@@ -50,11 +50,11 @@ function saveToLocalStorage() {
 }
 
 taskItemsArray.forEach(taskItem => {
-    const li = document.createElement('li');
+    li = document.createElement('li');
     li.innerHTML += `${taskItem.name}
     <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i>`
     li.className = 'toDoItem';
-    li.id = 'listItem'
+    li.id = taskItem.id;
     taskList.appendChild(li);
   });
 
@@ -66,7 +66,7 @@ taskItemsArray.forEach(taskItem => {
     );
     
     saveToLocalStorage();
-    document.getElementById('listItem').remove();
+    document.getElementById(taskItem.id).remove();
   }
 
 
