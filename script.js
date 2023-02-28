@@ -4,8 +4,15 @@ const taskList = document.getElementById('taskList');
 const taskForm = document.getElementById('taskForm');
 let savedArray = JSON.parse(localStorage.getItem('toDoList'));
 let taskItemsArray;
+
 if (savedArray === null) {
-    taskItemsArray = [];
+    axios.get('https://jsonplaceholder.typicode.com/todos/')
+        .then(response => {
+            for (let i = 0; i < 5; i++) {
+                taskItemsArray.push(response.data[i].title)
+            }
+        })
+        saveToLocalStorage();
 }
 else {
     taskItemsArray = savedArray;
