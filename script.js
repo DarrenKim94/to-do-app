@@ -81,18 +81,6 @@ function displayItems() {
     });
 }
 
-function displaySavedList() {
-    taskItemsArray.forEach(taskItem => {
-        li = document.createElement('li');
-        li.innerHTML += `${taskItem.name}
-        <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i>`;
-        li.className = 'toDoItem';
-        li.id = taskItem.id;
-        taskList.appendChild(li);
-    });
-}
-displaySavedList()
-
   function deleteTask(id) {
     taskItemsArray = taskItemsArray.filter(
         function(item) {
@@ -104,5 +92,4 @@ displaySavedList()
     document.getElementById(id).remove();
   }
 
-
-
+  displayItems();
