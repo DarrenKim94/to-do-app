@@ -13,12 +13,11 @@ if (savedArray === null) {
                     id : Math.floor(Math.random() * 1000),
                     name : response.data[i].title,
                 };
-        
                 taskItemsArray.push(axiosItem);
             }
             saveToLocalStorage();
+            displayItems();
         })
-        
 }
 else {
     taskItemsArray = savedArray;
@@ -48,6 +47,14 @@ function addNewTask(task) {
         taskInput.value = '';
     }
 }
+function show(resp) {
+    li = document.createElement('li');
+    li.innerHTML += `${resp.data[i].title}
+    <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${axiosItem.id})'></i>`;
+    li.className = 'toDoItem';
+    li.id = axiosItem.id;
+    taskList.appendChild(li);
+}
 
 function showList() {
     li = document.createElement('li');
@@ -60,6 +67,18 @@ function showList() {
 
 function saveToLocalStorage() {
     localStorage.setItem('toDoList', JSON.stringify(taskItemsArray));
+}
+
+function displayItems() {
+    let savedArray = JSON.parse(localStorage.getItem('toDoList'));
+    savedArray.forEach(taskItem => {
+        li = document.createElement('li');
+        li.innerHTML += `${taskItem.name}
+        <i class="deleteBtn fa-solid fa-trash-can" onclick='deleteTask(${taskItem.id})'></i>`;
+        li.className = 'toDoItem';
+        li.id = taskItem.id;
+        taskList.appendChild(li);
+    });
 }
 
 function displaySavedList() {
