@@ -22,6 +22,7 @@ if (savedArray === null) {
 else {
     taskItemsArray = savedArray;
 }
+displayItems();
 
 
 function addTaskBtn(event) {
@@ -92,4 +93,3 @@ function displayItems() {
     document.getElementById(id).remove();
   }
 
-  displayItems();
