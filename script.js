@@ -21,8 +21,8 @@ if (savedArray === null) {
 }
 else {
     taskItemsArray = savedArray;
+    displayItems();
 }
-displayItems();
 
 
 function addTaskBtn(event) {
